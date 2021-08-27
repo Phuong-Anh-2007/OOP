@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<div class="infor">
+    <h1>Thông tin nhân viên</h1>
+    <input type="number" name="id" id="id" placeholder="ID"> <br> <br>
+    <input type="text" name="employee" id="firstname" placeholder="Họ"> <br> <br>
+    <input type="text" name="employee" id="lastname" placeholder="Tên"> <br> <br>
+    <input type="number" name="salary" id="salary" placeholder="Lương tháng"> <br> <br>
+    <button onclick="click_me()">Add</button>
+</div>
+    <p id="result"></p>
+
+
+</body>
+</html>
+<script>
+    class employee {
+        constructor(id,firstname,lastname,salary) {
+            this.id = id;
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.salary = +salary;
+        }
+
+        getID() {
+            return this.id;
+        }
+        getFirstname() {
+            return this.firstname;
+        }
+        getLastname() {
+            return this.lastname;
+        }
+        getName() {
+            return this.firstname +' '+this.lastname;
+        }
+        getSalary() {
+            return this.salary;
+        }
+        getAnnualSalary() {
+            return this.salary * 12;
+        }
+        raiseSalary(percent) {
+            this.salary = (percent / 100)*this.salary+this.salary;
+            return this.salary;
+        }
+    }
+
+    function click_me() {
+        let nhan_vien = new employee(document.getElementById('id').value,
+                                    document.getElementById('firstname').value,
+                                    document.getElementById('lastname').value,
+                                    document.getElementById('salary').value,
+                                    
+                                    );
+        let nameOf = nhan_vien.getName();
+        let salary_month = nhan_vien.getSalary();
+        let salary_year = nhan_vien.getAnnualSalary();
+        let raise_month = nhan_vien.raiseSalary(+prompt('Tăng lương cho nhân viên'));
+
+
+        document.getElementById('result').innerHTML= nameOf+'<br>'
+                                                    +'Lương theo tháng: '+salary_month+'<br>'
+                                                    +'Lương theo năm: '+salary_year+'<br>'
+                                                    +'Tăng lương theo tháng'+raise_month+'<br>'
+                                                    +'Tăng lương theo năm: '+nhan_vien.getAnnualSalary();
+    }
+
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng lớp Date</title>
+</head>
+<body>
+   <input type="number" name="date" id="ngay" placeholder="Nhập vào ngày"> 
+   <input type="number" name="date" id="thang" placeholder="Nhập vào tháng">
+   <input type="number" name="date" id="nam" placeholder="Nhập vào năm">
+   <button onclick="watch_date()">Click nè 😉</button>
+   <p id="result"></p>
+</body>
+</html>
+<script>
+    class show_date {
+        constructor(day,month,year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+
+        //Hàm trả về
+        getDay() {
+            return this.day;
+        }
+
+        getMonth() {
+            return this.month;
+        }
+
+        getYear() {
+            return this.year;
+        }
+        
+    
+    }
+
+    function watch_date() {
+        let Date = new show_date(document.getElementById('ngay').value,
+                                document.getElementById('thang').value,
+                                document.getElementById('nam').value);
+        let day = Date.getDay();
+        let month = Date.getMonth();
+        let year = Date.getYear();
+        document.getElementById('result').innerHTML=day+'/'+month+'/'+year;
+    }
+    
+
+</script>
+

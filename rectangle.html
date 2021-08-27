@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
+</head>
+<body>
+    <button onclick="click_me()">Click nè 😉</button>
+    <p id="result"></p>
+    <canvas id="rectangle" width="100" height="100"></canvas>
+</body>
+</html>
+<script>
+    class rectangle {
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
+        }
+
+        getP() {
+            return (this.width+this.height)*2;
+        }
+
+        getS() {
+            return this.width*this.height;
+        }
+
+        showRectangle() {
+            document.getElementById('rectangle').innerHTML='';
+            let ctx = (document.getElementById('rectangle')).getContext('2d');
+            ctx.lineStyle = 'darkblack';
+            ctx.strokeRect(0, 0, this.width, this.height);
+        }
+    }
+
+    function click_me() {
+        const d= +prompt('Chiều dài: ');
+        const r = +prompt('Nhập chiều rộng: ');
+
+        let hcn = new rectangle(d,r);
+        let p_rec = hcn.getP();
+        let s_rec = hcn.getS();
+        hcn.showRectangle();
+
+        document.getElementById('result').innerHTML='Chu vi hình chữ nhật là: '+p_rec
+                                                +'<br>'
+                                                +'Diện tích hình chữ nhật là: '+s_rec;
+    }
+    
+</script>

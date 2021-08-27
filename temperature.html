@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xây dựng lớp mô tả Temperature</title>
+</head>
+<body style="text-align: center;">
+    <h3>Chuyển đổi nhiệt độ 🌡</h3>
+    <input type="number" name="number" id="number" oninput="change(+document.getElementById('number').value)" placeholder="Nhập vào một số">
+    <p id="result"></p>
+</body>
+</html>
+<script>
+    class temp {
+        constructor(celsius) {
+            this.celsius = celsius;
+        }
+
+        fromC_toF() {
+            return (this.celsius * 1.8) + 32;
+        }
+
+        fromC_toKelvin() {
+            return this.celsius + 273.15;
+        }
+    }
+
+    function change(c) {
+        let temperature = new temp(c);
+        let F = temperature.fromC_toF();
+        let K = temperature.fromC_toKelvin();
+
+        document.getElementById('result').innerHTML='<hr style="width:50%">'
+                                                    +'Độ F tương ứng là: '+F
+                                                    +'<br>'
+                                                    +'Độ K tương ứng là: '+K;
+    }
+    
+</script>
